@@ -4,15 +4,24 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   max-height: 100vh;
   max-width: 1280px;
+
+  @media (max-width: 980px) {
+    max-width: 600px;
+
+    @media (max-width: 610px) {
+      max-width: 300px;
+    }
+  }
 
   .news-wrapper-header {
     width: 100%;
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
-    padding-block: 2rem;
+    padding-block: 1.5rem;
 
     > h1 {
       font-size: 3rem;
@@ -24,6 +33,11 @@
       color: base.$dark-grayish-blue;
       transition: all 0.5s;
       gap: 1.5rem;
+
+      @media (max-width: 610px) {
+        display: none;
+        background: url("../images/icon-menu.svg") center center no-repeat;
+      }
 
       :nth-child(n):hover {
         color: base.$soft-red;
@@ -41,6 +55,16 @@
       "news-main-section news-main-section news-aside-section"
       "news-main-section news-main-section news-aside-section"
       "news-cards-section news-cards-section news-cards-section";
+
+    @media (max-width: 980px) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 610px) {
+      display: flex;
+      flex-wrap: wrap;
+    }
 
     .news-main-section {
       grid-area: news-main-section;
@@ -60,12 +84,27 @@
           "news-main-head news-main-text"
           "news-main-head news-main-text";
 
+        @media (max-width: 610px) {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 0;
+        }
+
         .news-main-head {
           grid-area: news-main-head;
           padding-inline-end: 1rem;
+          padding-block: 1rem;
           font-size: 2.8rem;
           line-height: 1;
-          padding-block: 1rem;
+          font-weight: base.$fw-bolder;
+
+          @media (max-width: 610px) {
+            padding-inline-end: 0;
+            margin-block-end: 0.8rem;
+            padding-block: 0;
+            font-size: 2rem;
+          }
         }
 
         .news-main-text {
@@ -78,6 +117,13 @@
           text-align: start;
           color: base.$dark-grayish-blue;
 
+          @media (max-width: 610px) {
+            display: flex;
+            flex-direction: column;
+            padding-block: 0;
+            gap: 1rem;
+          }
+
           button {
             height: 90%;
             width: 50%;
@@ -89,6 +135,10 @@
             letter-spacing: 0.1rem;
             font-weight: base.$fw-bold;
             transition: all 0.5s;
+
+            @media (max-width: 610px) {
+              height: 2.5rem;
+            }
           }
 
           button:hover {
@@ -106,16 +156,48 @@
       background-color: base.$very-dark-blue;
       color: base.$grayish-blue;
 
+      @media (max-width: 980px) {
+        padding: 1rem;
+      }
+
       > h1 {
         color: base.$soft-orange;
         font-weight: base.$fw-bold;
         font-size: 2.2rem;
+
+        @media (max-width: 980px) {
+          margin-block-end: 1rem;
+        }
       }
 
       .aside-articles {
+        @media (max-width: 980px) {
+          display: flex;
+          justify-content: space-between;
+          padding-block: 0;
+          word-break: break-all;
+          gap: 1rem;
+
+          @media (max-width: 610px) {
+            flex-direction: column;
+          }
+        }
+
         > article {
           padding-block: 1.5rem;
           text-align: start;
+
+          @media (max-width: 980px) {
+            display: flex;
+            padding: 0;
+            flex-direction: column;
+            align-items: start;
+            width: 100%;
+
+            @media (max-width: 600px) {
+              padding-block: 1rem;
+            }
+          }
 
           :first-child {
             margin-block-end: 1rem;
@@ -138,6 +220,14 @@
 
         > :nth-child(-n + 2) {
           border-block-end: 1px solid base.$grayish-blue;
+
+          @media (max-width: 980px) {
+            border-block-end: none;
+
+            @media (max-width: 610px) {
+              border-block-end: 1px solid base.$grayish-blue;
+            }
+          }
         }
       }
     }
@@ -145,17 +235,28 @@
     .news-cards-section {
       grid-area: news-cards-section;
       display: grid;
-      height: 8rem;
-      margin-block-start: 1.7rem;
+      min-height: 8rem;
       grid-template-columns: repeat(3, 1fr);
       gap: 0 0.5rem;
       align-content: center;
+
+      @media (max-width: 980px) {
+        display: flex;
+        flex-wrap: wrap;
+        margin-block: 1rem;
+        gap: 1rem;
+      }
 
       .card {
         display: flex;
         width: 19.71rem;
         align-items: start;
         color: base.$dark-grayish-blue;
+
+        @media (max-width: 980px) {
+          width: 18.2rem;
+        }
+
         > :first-child {
           img {
             height: 7rem;
@@ -178,6 +279,10 @@
             font-size: 1.8rem;
             font-weight: base.$fw-bolder;
             color: base.$grayish-blue;
+
+            @media (max-width: 610px) {
+              font-size: 1.5rem;
+            }
           }
 
           h2 {
